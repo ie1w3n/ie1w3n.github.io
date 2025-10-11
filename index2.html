@@ -25,6 +25,7 @@
     .icon-wrap img{width:52px;height:52px;border-radius:10px;object-fit:contain}
     .service h3{margin:0 0 6px;font-size:1rem}.service p{margin:0;color:var(--muted);font-size:0.92rem;line-height:1.45}
     .badge{display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(0,224,255,0.05);border:1px solid rgba(0,224,255,0.06);color:var(--text);font-weight:600;font-size:0.86rem;margin:4px;white-space:nowrap}
+    .badge img{vertical-align:-4px;margin-right:6px}
     .contact-links{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:flex-start}
     .contact-links a{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);border-radius:12px;padding:10px 14px;text-decoration:none;color:var(--text);transition:.15s}
     .contact-links a img{width:22px;height:22px;object-fit:contain}
@@ -96,10 +97,22 @@
   <section class="card-block reveal">
     <h2>Ưu điểm & cam kết</h2>
     <div>
-      <span class="badge">💾 Sao lưu dữ liệu an toàn</span>
-      <span class="badge">🔧 Tối ưu cho gaming & công việc</span>
-      <span class="badge">💬 Hỗ trợ hỏi đáp 24/24</span>
-      <span class="badge">🛡 Bảo hành Win/Office 1 tháng – Spotify/Locket vĩnh viễn</span>
+      <span class="badge">
+        <img src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Floppy%20Disk/Flat/floppy_disk_flat.svg" width="20">
+        Sao lưu dữ liệu an toàn
+      </span>
+      <span class="badge">
+        <img src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Hammer%20and%20Wrench/Flat/hammer_and_wrench_flat.svg" width="20">
+        Tối ưu cho gaming & công việc
+      </span>
+      <span class="badge">
+        <img src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Speech%20Balloon/Flat/speech_balloon_flat.svg" width="20">
+        Hỗ trợ hỏi đáp 24/24
+      </span>
+      <span class="badge">
+        <img src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Shield/Flat/shield_flat.svg" width="20">
+        Bảo hành Win/Office 1 tháng – Spotify/Locket vĩnh viễn
+      </span>
     </div>
   </section>
 
@@ -141,18 +154,6 @@ document.getElementById('year').textContent=new Date().getFullYear();
   const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target)}})},{threshold:0.1});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 })();
-</script>
-
-<!-- Twemoji (GitHub/Discord style emoji SVG, fix CDN) -->
-<script src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
-<script>
-  window.addEventListener("load", function() {
-    twemoji.parse(document.body, {
-      folder: "svg",
-      ext: ".svg",
-      base: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/"
-    });
-  });
 </script>
 
 </body>

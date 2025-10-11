@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
   <title>Quyen Le — Dịch vụ kỹ thuật & phần mềm</title>
 
-  <!-- ✅ Cache thông minh: chỉ làm mới mỗi 24h -->
   <script>
     const cacheKey = "page_last_refresh";
     const last = localStorage.getItem(cacheKey);
@@ -16,7 +15,6 @@
     }
   </script>
 
-  <!-- Fonts + style -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -88,7 +86,7 @@
     .service h3{margin:0 0 6px;font-size:1rem;}
     .service p{margin:0;color:var(--muted);font-size:0.92rem;line-height:1.45;}
 
-    /* Badge */
+    /* Badge - Cải tiến: Thêm hiệu ứng hover (từ index3.html) */
     .badge{
       display:inline-flex;align-items:center;gap:8px;padding:8px 12px;
       border-radius:999px;background:rgba(0,224,255,0.05);
@@ -149,22 +147,76 @@
     <a href="#contact" class="btn">Liên hệ ngay</a>
   </header>
 
+  <section id="services" class="card-block">
+    <h2>Dịch vụ phần mềm</h2>
+    <div class="grid">
+      <div class="service">
+        <div class="icon-wrap"><img src="images/windows.png" alt="Windows logo"></div>
+        <div><h3>Cài đặt Windows chuẩn Microsoft</h3>
+          <p>Cài Windows 10/11 bản quyền gốc, driver đầy đủ, tối ưu ổn định.</p></div>
+      </div>
+      <div class="service">
+        <div class="icon-wrap"><img src="images/windows ghost.png" alt="Ghost"></div>
+        <div><h3>Cài đặt Windows Ghost tối ưu</h3>
+          <p>Ghost tùy chỉnh nhẹ, loại bỏ ứng dụng thừa, tối ưu hiệu năng và khởi động nhanh.</p></div>
+      </div>
+      <div class="service">
+        <div class="icon-wrap"><img src="images/office.png" alt="Office logo"></div>
+        <div><h3>Cài đặt Office mọi phiên bản</h3>
+          <p>Office 2016–2024, kích hoạt kỹ thuật số, đồng bộ tài khoản và tối ưu công việc.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card-block">
+    <h2>Dịch vụ tiện ích</h2>
+    <div class="grid">
+      <div class="service">
+        <div class="icon-wrap"><img src="images/locket.png" alt="Locket logo"></div>
+        <div><h3>Locket Gold</h3>
+          <p>Cài đặt Locket Gold bản premium, bảo hành vĩnh viễn, hỗ trợ trọn đời.</p></div>
+      </div>
+      <div class="service">
+        <div class="icon-wrap"><img src="images/spotify.png" alt="Spotify logo"></div>
+        <div><h3>Spotify Premium</h3>
+          <p>Cung cấp tài khoản Spotify Premium, bảo hành vĩnh viễn, nghe nhạc không giới hạn.</p></div>
+      </div>
+      <div class="service">
+        <div class="icon-wrap"><img src="images/telegram.png" alt="Telegram logo"></div>
+        <div><h3>Hỗ trợ & Bảo hành</h3>
+          <p>Tư vấn 24/24. Windows & Office: bảo hành 1 tháng. Spotify & Locket: bảo hành vĩnh viễn.</p></div>
+      </div>
+    </div>
+  </section>
+
   <section class="card-block">
     <h2>Ưu điểm & cam kết</h2>
     <div class="badges-group">
-      <span class="badge"><img src="https://cdn.jsdelivr.net/npm/openmoji@15.0.0/color/svg/1F4BE.svg"> Sao lưu dữ liệu an toàn</span>
-      <span class="badge"><img src="https://cdn.jsdelivr.net/npm/openmoji@15.0.0/color/svg/1F527.svg"> Tối ưu cho gaming & công việc</span>
-      <span class="badge"><img src="https://cdn.jsdelivr.net/npm/openmoji@15.0.0/color/svg/1F4AC.svg"> Hỗ trợ hỏi đáp 24/24</span>
-      <span class="badge"><img src="https://cdn.jsdelivr.net/npm/openmoji@15.0.0/color/svg/1F6E1.svg"> Bảo hành Win/Office 1 tháng – Spotify/Locket vĩnh viễn</span>
+      <span class="badge">
+        <img src="https://cdn.jsdelivr.net/npm/openmoji@15.0.0/color/svg/1F4BE.svg" alt="Sao lưu">
+        Sao lưu dữ liệu an toàn
+      </span>
+      <span class="badge">
+        <img src="https://cdn.jsdelivr.net/npm/openmoji@15.0.0/color/svg/1F527.svg" alt="Tối ưu">
+        Tối ưu cho gaming & công việc
+      </span>
+      <span class="badge">
+        <img src="https://cdn.jsdelivr.net/npm/openmoji@15.0.0/color/svg/1F4AC.svg" alt="Hỗ trợ">
+        Hỗ trợ hỏi đáp 24/24
+      </span>
+      <span class="badge">
+        <img src="https://cdn.jsdelivr.net/npm/openmoji@15.0.0/color/svg/1F6E1.svg" alt="Bảo hành">
+        Bảo hành Win/Office 1 tháng – Spotify/Locket vĩnh viễn
+      </span>
     </div>
   </section>
 
   <section id="contact" class="card-block">
     <h2>Liên hệ</h2>
     <div class="contact-links">
-      <a href="https://facebook.com/yourpage"><img src="images/facebook.png?v=2">Facebook</a>
-      <a href="https://zalo.me/yourid"><img src="images/zalo.png?v=2">Zalo</a>
-      <a href="https://t.me/yourusername"><img src="images/telegram.png?v=2">Telegram</a>
+      <a href="https://facebook.com/yourpage" target="_blank"><img src="images/facebook.png?v=2" alt="Facebook">Facebook</a>
+      <a href="https://zalo.me/yourid" target="_blank"><img src="images/zalo.png?v=2" alt="Zalo">Zalo</a>
+      <a href="https://t.me/yourusername" target="_blank"><img src="images/telegram.png?v=2" alt="Telegram">Telegram</a>
       <a href="tel:+849xxxxxxxx">Gọi ngay</a>
     </div>
   </section>
@@ -175,5 +227,6 @@
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
+
 </body>
 </html>

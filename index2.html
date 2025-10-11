@@ -48,7 +48,6 @@
       display:flex;align-items:center;justify-content:space-between;
       gap:20px;backdrop-filter:blur(6px);flex-wrap:wrap;
     }
-    /* Căn lề trái mặc định trên Desktop */
     .brand{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
     .logo-img{
       width:90px;height:90px;border-radius:16px;object-fit:cover;
@@ -123,8 +122,8 @@
       .btn{margin-top:10px;}
       .badges-group{flex-direction:column;align-items:center;}
       .badge{max-width:92%;justify-content:center;}
-      /* ✅ Cải tiến: Căn giữa khối logo và tiêu đề */
-      .brand{justify-content:center;}
+      /* ✅ Đã Sửa: Thêm width: 100% để .brand chiếm hết chiều ngang và căn giữa nội dung */
+      .brand{justify-content:center; width: 100%;}
     }
     @media(max-width:480px){
       .contact-links a{flex:1 1 100%;justify-content:center;}
@@ -142,7 +141,7 @@
       <img src="images/logowd.png?v=2" alt="Logo" class="logo-img">
       <div class="title">
         <h1>Quyen Le</h1>
-        <p>Dịch vụ kỹ thuật & hỗ trợ phần mềm chuyên nghiệp</p>
+        <p>Dịch vụ kỹ thuật & hỗ trợ phần mềm</p>
       </div>
     </div>
     <a href="#contact" class="btn">Liên hệ ngay</a>

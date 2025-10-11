@@ -48,6 +48,7 @@
       display:flex;align-items:center;justify-content:space-between;
       gap:20px;backdrop-filter:blur(6px);flex-wrap:wrap;
     }
+    /* Căn lề trái mặc định trên Desktop */
     .brand{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
     .logo-img{
       width:90px;height:90px;border-radius:16px;object-fit:cover;
@@ -86,7 +87,6 @@
     .service h3{margin:0 0 6px;font-size:1rem;}
     .service p{margin:0;color:var(--muted);font-size:0.92rem;line-height:1.45;}
 
-    /* Badge - Cải tiến: Thêm hiệu ứng hover (từ index3.html) */
     .badge{
       display:inline-flex;align-items:center;gap:8px;padding:8px 12px;
       border-radius:999px;background:rgba(0,224,255,0.05);
@@ -98,7 +98,6 @@
     .badge img{width:20px;vertical-align:-4px;filter:drop-shadow(0 4px 10px rgba(0,224,255,0.15));}
     .badges-group{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;}
 
-    /* Contact */
     .contact-links{
       display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:flex-start;
     }
@@ -114,16 +113,18 @@
 
     footer{text-align:center;color:var(--muted);margin-top:28px;font-size:0.9rem;}
 
-    /* Responsive */
+    /* Mobile Optimizations */
     @media(max-width:768px){
       .wrap{padding:18px;}
-      header.hero{flex-direction:column;text-align:center;}
       .title h1{font-size:1.25rem;}
       .title p{font-size:0.95rem;}
       .logo-img{width:72px;height:72px;}
+      header.hero{padding:22px;flex-direction:column;text-align:center;}
       .btn{margin-top:10px;}
       .badges-group{flex-direction:column;align-items:center;}
       .badge{max-width:92%;justify-content:center;}
+      /* ✅ Cải tiến: Căn giữa khối logo và tiêu đề */
+      .brand{justify-content:center;}
     }
     @media(max-width:480px){
       .contact-links a{flex:1 1 100%;justify-content:center;}

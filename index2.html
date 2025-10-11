@@ -143,11 +143,15 @@ document.getElementById('year').textContent=new Date().getFullYear();
 })();
 </script>
 
-<!-- Twemoji (GitHub/Discord style emoji SVG) -->
-<script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+<!-- Twemoji (GitHub/Discord style emoji SVG, fix CDN) -->
+<script src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
 <script>
   window.addEventListener("load", function() {
-    twemoji.parse(document.body, {folder: 'svg', ext: '.svg'});
+    twemoji.parse(document.body, {
+      folder: "svg",
+      ext: ".svg",
+      base: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/"
+    });
   });
 </script>
 

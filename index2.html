@@ -9,13 +9,14 @@
     const cacheKey = "page_last_refresh";
     const last = localStorage.getItem(cacheKey);
     const now = Date.now();
+    // Tải lại nếu chưa có last refresh hoặc đã quá 24h
     if (!last || now - last > 24 * 60 * 60 * 1000) {
       localStorage.setItem(cacheKey, now);
       window.location.reload(true);
     }
   </script>
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       --bg:#05060a;
@@ -49,6 +50,7 @@
       gap:20px;backdrop-filter:blur(6px);flex-wrap:wrap;
     }
     .brand{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+    /* Cải tiến: Tăng kích thước logo và đổ bóng mạnh hơn */
     .logo-img{
       width:90px;height:90px;border-radius:16px;object-fit:cover;
       box-shadow:0 12px 40px rgba(0,180,255,0.18),0 0 18px rgba(0,224,255,0.08);
@@ -86,6 +88,7 @@
     .service h3{margin:0 0 6px;font-size:1rem;}
     .service p{margin:0;color:var(--muted);font-size:0.92rem;line-height:1.45;}
 
+    /* Cải tiến: Kiểu dáng mới cho badge và hỗ trợ icon */
     .badge{
       display:inline-flex;align-items:center;gap:8px;padding:8px 12px;
       border-radius:999px;background:rgba(0,224,255,0.05);
@@ -108,22 +111,23 @@
     }
     .contact-links a img{width:22px;height:22px;object-fit:contain;}
     .contact-links a:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,116,255,0.08);}
+    /* Cải tiến: Nút gọi nằm bên phải */
     .contact-links a:last-child{margin-left:auto;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#021220;font-weight:600;}
 
     footer{text-align:center;color:var(--muted);margin-top:28px;font-size:0.9rem;}
 
-    /* Mobile Optimizations */
+    /* Cải tiến: Tối ưu hóa trên Mobile */
     @media(max-width:768px){
       .wrap{padding:18px;}
       .title h1{font-size:1.25rem;}
       .title p{font-size:0.95rem;}
       .logo-img{width:72px;height:72px;}
+      /* Cải tiến: Căn giữa hero và brand trên mobile */
       header.hero{padding:22px;flex-direction:column;text-align:center;}
       .btn{margin-top:10px;}
       .badges-group{flex-direction:column;align-items:center;}
       .badge{max-width:92%;justify-content:center;}
-      /* ✅ Đã Sửa: Thêm width: 100% để .brand chiếm hết chiều ngang và căn giữa nội dung */
-      .brand{justify-content:center; width: 100%;}
+      .brand{justify-content:center; width: 100%;} /* Đã Sửa */
     }
     @media(max-width:480px){
       .contact-links a{flex:1 1 100%;justify-content:center;}
@@ -131,7 +135,7 @@
       footer{font-size:0.8rem;}
     }
   </style>
-</head>
+  </head>
 <body>
 <canvas id="bg-canvas"></canvas>
 <div class="wrap">
@@ -210,7 +214,6 @@
       </span>
     </div>
   </section>
-
   <section id="contact" class="card-block">
     <h2>Liên hệ</h2>
     <div class="contact-links">
@@ -226,6 +229,23 @@
 
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// Background particles script (giữ lại từ index.html)
+(function(){
+  const c=document.getElementById('bg-canvas'),x=c.getContext('2d');
+  let w=c.width=innerWidth,h=c.height=innerHeight;
+  const DPR=Math.min(window.devicePixelRatio||1,2);
+  c.width=w*DPR;c.height=h*DPR;c.style.width=w+'px';c.style.height=h+'px';x.scale(DPR,DPR);
+  let p=[];const colors=['rgba(0,224,255,0.15)','rgba(0,116,255,0.1)','rgba(0,224,255,0.06)'];
+  function r(m,M){return Math.random()*(M-m)+m}
+  function init(){p=[];for(let i=0;i<50;i++)p.push({x:r(0,w),y:r(0,h),vx:r(-0.2,0.2),vy:r(-0.05,0.25),r:r(0.6,2.6),col:colors[Math.floor(Math.random()*3)]});}
+  init();
+  function d(){x.clearRect(0,0,w,h);for(let a of p){a.x+=a.vx;a.y+=a.vy;if(a.x<-20)a.x=w+20;if(a.x>w+20)a.x=-20;if(a.y>h+20)a.y=-20;
+  const g=x.createRadialGradient(a.x,a.y,0,a.x,a.y,a.r*6);g.addColorStop(0,a.col);g.addColorStop(1,'rgba(0,0,0,0)');x.fillStyle=g;x.beginPath();x.arc(a.x,a.y,a.r*4,0,Math.PI*2);x.fill();}
+  requestAnimationFrame(d);}d();
+})();
+
+// Lưu ý: Đã loại bỏ script 'reveal' cũ.
 </script>
 
 </body>

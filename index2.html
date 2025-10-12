@@ -5,16 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
   <title>Quyen Le — Dịch vụ kỹ thuật & phần mềm</title>
 
-  <script>
-    const cacheKey = "page_last_refresh";
-    const last = localStorage.getItem(cacheKey);
-    const now = Date.now();
-    // Tải lại nếu chưa có last refresh hoặc đã quá 24h
-    if (!last || now - last > 24 * 60 * 60 * 1000) {
-      localStorage.setItem(cacheKey, now);
-      window.location.reload(true);
-    }
-  </script>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   
   <style>
@@ -50,7 +44,6 @@
       gap:20px;backdrop-filter:blur(6px);flex-wrap:wrap;
     }
     .brand{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
-    /* Cải tiến: Tăng kích thước logo và đổ bóng mạnh hơn */
     .logo-img{
       width:90px;height:90px;border-radius:16px;object-fit:cover;
       box-shadow:0 12px 40px rgba(0,180,255,0.18),0 0 18px rgba(0,224,255,0.08);
@@ -88,7 +81,6 @@
     .service h3{margin:0 0 6px;font-size:1rem;}
     .service p{margin:0;color:var(--muted);font-size:0.92rem;line-height:1.45;}
 
-    /* Cải tiến: Kiểu dáng mới cho badge và hỗ trợ icon */
     .badge{
       display:inline-flex;align-items:center;gap:8px;padding:8px 12px;
       border-radius:999px;background:rgba(0,224,255,0.05);
@@ -111,23 +103,32 @@
     }
     .contact-links a img{width:22px;height:22px;object-fit:contain;}
     .contact-links a:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,116,255,0.08);}
-    /* Cải tiến: Nút gọi nằm bên phải */
     .contact-links a:last-child{margin-left:auto;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#021220;font-weight:600;}
 
     footer{text-align:center;color:var(--muted);margin-top:28px;font-size:0.9rem;}
 
-    /* Cải tiến: Tối ưu hóa trên Mobile */
+    /* BẮT ĐẦU: Thêm lại CSS cho hiệu ứng reveal */
+    .reveal{
+      opacity:0;
+      transform:translateY(10px);
+      transition:opacity .6s,transform .6s;
+    }
+    .reveal.visible{
+      opacity:1;
+      transform:none;
+    }
+    /* KẾT THÚC: CSS reveal */
+
     @media(max-width:768px){
       .wrap{padding:18px;}
       .title h1{font-size:1.25rem;}
       .title p{font-size:0.95rem;}
       .logo-img{width:72px;height:72px;}
-      /* Cải tiến: Căn giữa hero và brand trên mobile */
       header.hero{padding:22px;flex-direction:column;text-align:center;}
       .btn{margin-top:10px;}
       .badges-group{flex-direction:column;align-items:center;}
       .badge{max-width:92%;justify-content:center;}
-      .brand{justify-content:center; width: 100%;} /* Đã Sửa */
+      .brand{justify-content:center; width: 100%;}
     }
     @media(max-width:480px){
       .contact-links a{flex:1 1 100%;justify-content:center;}
@@ -135,12 +136,12 @@
       footer{font-size:0.8rem;}
     }
   </style>
-  </head>
+</head>
 <body>
 <canvas id="bg-canvas"></canvas>
 <div class="wrap">
 
-  <header class="hero">
+  <header class="hero reveal">
     <div class="brand">
       <img src="images/logowd.png?v=2" alt="Logo" class="logo-img">
       <div class="title">
@@ -151,7 +152,7 @@
     <a href="#contact" class="btn">Liên hệ ngay</a>
   </header>
 
-  <section id="services" class="card-block">
+  <section id="services" class="card-block reveal">
     <h2>Dịch vụ phần mềm</h2>
     <div class="grid">
       <div class="service">
@@ -172,7 +173,7 @@
     </div>
   </section>
 
-  <section class="card-block">
+  <section class="card-block reveal">
     <h2>Dịch vụ tiện ích</h2>
     <div class="grid">
       <div class="service">
@@ -193,7 +194,7 @@
     </div>
   </section>
 
-  <section class="card-block">
+  <section class="card-block reveal">
     <h2>Ưu điểm & cam kết</h2>
     <div class="badges-group">
       <span class="badge">
@@ -214,7 +215,8 @@
       </span>
     </div>
   </section>
-  <section id="contact" class="card-block">
+
+  <section id="contact" class="card-block reveal">
     <h2>Liên hệ</h2>
     <div class="contact-links">
       <a href="https://www.facebook.com/ie.1w3n.17/" target="_blank"><img src="images/facebook.png?v=2" alt="Facebook">Facebook</a>
@@ -230,7 +232,7 @@
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Background particles script (giữ lại từ index.html)
+// Background particles script
 (function(){
   const c=document.getElementById('bg-canvas'),x=c.getContext('2d');
   let w=c.width=innerWidth,h=c.height=innerHeight;
@@ -245,7 +247,20 @@ document.getElementById('year').textContent = new Date().getFullYear();
   requestAnimationFrame(d);}d();
 })();
 
-// Lưu ý: Đã loại bỏ script 'reveal' cũ.
+// BẮT ĐẦU: Thêm lại JavaScript Intersection Observer để kích hoạt hiệu ứng reveal
+(function(){
+  // Sử dụng ngưỡng 0.1 (10% phần tử đi vào viewport)
+  const obs=new IntersectionObserver(e=>{e.forEach(en=>{
+    if(en.isIntersecting){
+      en.target.classList.add('visible');
+      obs.unobserve(en.target) // Ngừng quan sát sau khi đã hiện ra
+    }
+  })},{threshold:0.1});
+  
+  // Áp dụng cho tất cả các phần tử có class 'reveal'
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+})();
+// KẾT THÚC: JavaScript reveal
 </script>
 
 </body>

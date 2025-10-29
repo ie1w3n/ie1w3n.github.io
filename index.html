@@ -107,17 +107,8 @@
 
     footer{text-align:center;color:var(--muted);margin-top:28px;font-size:0.9rem;}
 
-    /* BẮT ĐẦU: Thêm lại CSS cho hiệu ứng reveal */
-    .reveal{
-      opacity:0;
-      transform:translateY(10px);
-      transition:opacity .6s,transform .6s;
-    }
-    .reveal.visible{
-      opacity:1;
-      transform:none;
-    }
-    /* KẾT THÚC: CSS reveal */
+    .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s,transform .6s;}
+    .reveal.visible{opacity:1;transform:none;}
 
     @media(max-width:768px){
       .wrap{padding:18px;}
@@ -182,14 +173,9 @@
           <p>Cài đặt Locket Gold bản premium, bảo hành vĩnh viễn, hỗ trợ trọn đời.</p></div>
       </div>
       <div class="service">
-        <div class="icon-wrap"><img src="images/spotify.png" alt="Spotify logo"></div>
-        <div><h3>Spotify Premium</h3>
-          <p>Cung cấp tài khoản Spotify Premium, bảo hành vĩnh viễn, nghe nhạc không giới hạn.</p></div>
-      </div>
-      <div class="service">
         <div class="icon-wrap"><img src="images/telegram.png" alt="Telegram logo"></div>
         <div><h3>Hỗ trợ & Bảo hành</h3>
-          <p>Tư vấn 24/24. Windows & Office: bảo hành 1 tháng. Spotify & Locket: bảo hành vĩnh viễn.</p></div>
+          <p>Tư vấn 24/24. Windows & Office: bảo hành 1 tháng. Locket: bảo hành vĩnh viễn.</p></div>
       </div>
     </div>
   </section>
@@ -197,22 +183,10 @@
   <section class="card-block reveal">
     <h2>Ưu điểm & cam kết</h2>
     <div class="badges-group">
-      <span class="badge">
-        <img src="https://cdn.jsdelivr.net/npm/openmoji@15.0.0/color/svg/1F4BE.svg" alt="Sao lưu">
-        Sao lưu dữ liệu an toàn
-      </span>
-      <span class="badge">
-        <img src="https://cdn.jsdelivr.net/npm/openmoji@15.0.0/color/svg/1F527.svg" alt="Tối ưu">
-        Tối ưu cho gaming & công việc
-      </span>
-      <span class="badge">
-        <img src="https://cdn.jsdelivr.net/npm/openmoji@15.0.0/color/svg/1F4AC.svg" alt="Hỗ trợ">
-        Hỗ trợ hỏi đáp 24/24
-      </span>
-      <span class="badge">
-        <img src="https://cdn.jsdelivr.net/npm/openmoji@15.0.0/color/svg/1F6E1.svg" alt="Bảo hành">
-        Bảo hành Win/Office 1 tháng – Spotify/Locket vĩnh viễn
-      </span>
+      <span class="badge"><img src="https://cdn.jsdelivr.net/npm/openmoji@15.0.0/color/svg/1F4BE.svg" alt="Sao lưu">Sao lưu dữ liệu an toàn</span>
+      <span class="badge"><img src="https://cdn.jsdelivr.net/npm/openmoji@15.0.0/color/svg/1F527.svg" alt="Tối ưu">Tối ưu cho gaming & công việc</span>
+      <span class="badge"><img src="https://cdn.jsdelivr.net/npm/openmoji@15.0.0/color/svg/1F4AC.svg" alt="Hỗ trợ">Hỗ trợ hỏi đáp 24/24</span>
+      <span class="badge"><img src="https://cdn.jsdelivr.net/npm/openmoji@15.0.0/color/svg/1F6E1.svg" alt="Bảo hành">Bảo hành Win/Office 1 tháng – Locket vĩnh viễn</span>
     </div>
   </section>
 
@@ -232,7 +206,7 @@
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Background particles script
+// Background particles
 (function(){
   const c=document.getElementById('bg-canvas'),x=c.getContext('2d');
   let w=c.width=innerWidth,h=c.height=innerHeight;
@@ -247,20 +221,13 @@ document.getElementById('year').textContent = new Date().getFullYear();
   requestAnimationFrame(d);}d();
 })();
 
-// BẮT ĐẦU: Thêm lại JavaScript Intersection Observer để kích hoạt hiệu ứng reveal
+// Reveal animation
 (function(){
-  // Sử dụng ngưỡng 0.1 (10% phần tử đi vào viewport)
   const obs=new IntersectionObserver(e=>{e.forEach(en=>{
-    if(en.isIntersecting){
-      en.target.classList.add('visible');
-      obs.unobserve(en.target) // Ngừng quan sát sau khi đã hiện ra
-    }
+    if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target)}
   })},{threshold:0.1});
-  
-  // Áp dụng cho tất cả các phần tử có class 'reveal'
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 })();
-// KẾT THÚC: JavaScript reveal
 </script>
 
 </body>
